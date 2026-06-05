@@ -72,54 +72,80 @@ export function SkillsGalaxy() {
 
   return (
     <section id="skills" className="relative mx-auto max-w-7xl px-6 py-32 md:py-44">
+      {/* Decorative glow */}
+      <div
+        className="pointer-events-none absolute -left-20 top-1/4 z-0 h-[400px] w-[400px] rounded-full opacity-30"
+        style={{
+          background: "radial-gradient(circle, oklch(0.62 0.22 280 / 0.25) 0%, transparent 70%)",
+          filter: "blur(80px)",
+        }}
+      />
+
       <SectionLabel index="02 / Skills">Capabilities Matrix</SectionLabel>
 
-      <div className="grid gap-10 md:grid-cols-12">
-        <FadeIn>
-          <div className="md:col-span-4">
-            <h2 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
-              An orbiting toolkit.
-            </h2>
-            <p className="mt-6 max-w-md text-foreground/70">
-              Every node is a craft I use to shape ideas into shippable, premium
-              digital products. Move your cursor through the galaxy.
-            </p>
-            <div className="mt-10 glass rounded-2xl p-5">
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/50">Probe</div>
-              <div className="mt-2 flex items-baseline justify-between">
-                <span className="font-display text-2xl font-semibold">
-                  {hovered?.name ?? "Idle"}
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/60">
-                  {hovered?.level ?? "Hover a node"}
-                </span>
-              </div>
-              <div className="mt-4 h-px w-full bg-foreground/10" />
-              <div className="mt-3 grid grid-cols-7 gap-1">
-                {skills.map((s) => (
-                  <div
-                    key={s.name}
-                    className="h-1 rounded-full bg-foreground/20"
-                    style={{ opacity: hovered?.name === s.name ? 1 : 0.3 }}
-                  />
-                ))}
-              </div>
+      <div className="relative z-10 grid gap-10 md:grid-cols-12">
+        {/* Left column — text + probe */}
+        <FadeIn className="md:col-span-4">
+          <h2 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
+            An orbiting{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, oklch(0.62 0.22 280), oklch(0.55 0.22 340))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              toolkit
+            </span>
+            .
+          </h2>
+          <p className="mt-6 max-w-md text-foreground/65 leading-relaxed">
+            Every node is a craft I use to shape ideas into shippable, premium
+            digital products. Move your cursor through the galaxy.
+          </p>
+
+          {/* Probe card */}
+          <div className="mt-10 glass rounded-2xl p-5">
+            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/50">Probe</div>
+            <div className="mt-2 flex items-baseline justify-between">
+              <span className="font-display text-2xl font-semibold">
+                {hovered?.name ?? "Idle"}
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/60">
+                {hovered?.level ?? "Hover a node"}
+              </span>
+            </div>
+            <div className="mt-4 h-px w-full bg-foreground/10" />
+            <div className="mt-3 grid grid-cols-7 gap-1">
+              {skills.map((s) => (
+                <div
+                  key={s.name}
+                  className="h-1.5 rounded-full transition-all duration-300"
+                  style={{
+                    background: hovered?.name === s.name
+                      ? "oklch(0.62 0.22 280)"
+                      : "oklch(0 0 0 / 0.15)",
+                    opacity: hovered?.name === s.name ? 1 : 0.4,
+                    transform: hovered?.name === s.name ? "scaleY(1.5)" : "scaleY(1)",
+                  }}
+                />
+              ))}
             </div>
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.1}>
-          <div className="relative md:col-span-8">
-            <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-foreground/10 bg-gradient-to-br from-white to-[oklch(0.94_0_0)]">
-              <div className="absolute inset-0 grid-lines opacity-50" />
-              <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 6], fov: 45 }}>
-                <Suspense fallback={null}>
-                  <ambientLight intensity={0.8} />
-                  <directionalLight position={[4, 4, 4]} intensity={1.2} />
-                  <Galaxy onHover={setHovered} />
-                </Suspense>
-              </Canvas>
-            </div>
+        {/* Right column — 3D canvas */}
+        <FadeIn delay={0.1} className="md:col-span-8">
+          <div className="relative aspect-square w-full overflow-hidden rounded-3xl border border-foreground/10 bg-gradient-to-br from-white to-[oklch(0.95_0.02_280)]">
+            <div className="absolute inset-0 grid-lines opacity-40" />
+            <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 6], fov: 45 }}>
+              <Suspense fallback={null}>
+                <ambientLight intensity={0.8} />
+                <directionalLight position={[4, 4, 4]} intensity={1.2} />
+                <Galaxy onHover={setHovered} />
+              </Suspense>
+            </Canvas>
           </div>
         </FadeIn>
       </div>

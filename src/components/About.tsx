@@ -25,64 +25,64 @@ export function About() {
       <SectionLabel index="01 / About">Profile</SectionLabel>
 
       <div className="relative z-10 grid gap-16 md:grid-cols-12">
-        <FadeIn delay={0.05}>
-          <div className="md:col-span-5">
-            <div className="glass relative aspect-[3/4] overflow-hidden rounded-3xl p-6 shadow-[var(--shadow-glow)]">
-              {/* Gradient backdrop inside card */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(0.96_0.04_280),oklch(0.97_0_0))]" />
-              {/* Animated noise grain */}
-              <div className="noise absolute inset-0 z-[1]" />
+        {/* Left column — card */}
+        <FadeIn delay={0.05} className="md:col-span-5">
+          <div className="glass relative aspect-[3/4] overflow-hidden rounded-3xl p-6 shadow-[var(--shadow-glow)]">
+            {/* Gradient backdrop inside card */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(0.96_0.04_280),oklch(0.97_0_0))]" />
+            {/* Animated noise grain */}
+            <div className="noise absolute inset-0 z-[1]" />
 
-              <div className="relative z-[2] flex h-full flex-col justify-between">
-                <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/60">
-                  <span>ID · MA-2035</span>
-                  <span className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-status" />
-                    LIVE
+            <div className="relative z-[2] flex h-full flex-col justify-between">
+              <div className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/60">
+                <span>ID · MA-2035</span>
+                <span className="flex items-center gap-1.5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-status" />
+                  LIVE
+                </span>
+              </div>
+
+              <div className="relative grid place-items-center py-8">
+                {/* Outer decorative ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                  className="absolute h-52 w-52 rounded-full border border-dashed border-foreground/12"
+                />
+                {/* Inner slow reverse ring */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
+                  className="absolute h-40 w-40 rounded-full border border-dotted border-foreground/8"
+                />
+
+                <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-br from-white via-[oklch(0.96_0.04_280)] to-[oklch(0.88_0.06_260)] shadow-[0_8px_40px_oklch(0.62_0.22_280/0.18)]">
+                  <span className="font-display text-5xl font-semibold tracking-tight bg-gradient-to-br from-[oklch(0.08_0.02_270)] to-[oklch(0.28_0.08_280)] bg-clip-text text-transparent select-none">
+                    MA
                   </span>
                 </div>
+              </div>
 
-                <div className="relative grid place-items-center py-8">
-                  {/* Outer decorative ring */}
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
-                    className="absolute h-52 w-52 rounded-full border border-dashed border-foreground/12"
-                  />
-                  {/* Inner slow reverse ring */}
-                  <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
-                    className="absolute h-40 w-40 rounded-full border border-dotted border-foreground/8"
-                  />
-
-                  <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-gradient-to-br from-white via-[oklch(0.96_0.04_280)] to-[oklch(0.88_0.06_260)] shadow-[0_8px_40px_oklch(0.62_0.22_280/0.18)]">
-                    <span className="font-display text-5xl font-semibold tracking-tight bg-gradient-to-br from-[oklch(0.08_0.02_270)] to-[oklch(0.28_0.08_280)] bg-clip-text text-transparent select-none">
-                      MA
-                    </span>
-                  </div>
+              <div className="space-y-2 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/70">
+                <div className="flex justify-between border-b border-foreground/8 pb-2">
+                  <span>Name</span><span className="text-foreground">Manan Agrawal</span>
                 </div>
-
-                <div className="space-y-2 font-mono text-[10px] uppercase tracking-[0.3em] text-foreground/70">
-                  <div className="flex justify-between border-b border-foreground/8 pb-2">
-                    <span>Name</span><span className="text-foreground">Manan Agrawal</span>
-                  </div>
-                  <div className="flex justify-between border-b border-foreground/8 pb-2">
-                    <span>Role</span><span className="text-foreground">Frontend Dev</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Status</span>
-                    <span className="flex items-center gap-1.5 text-emerald-600">
-                      <span className="h-1 w-1 rounded-full bg-emerald-500 animate-status" />
-                      Open to work
-                    </span>
-                  </div>
+                <div className="flex justify-between border-b border-foreground/8 pb-2">
+                  <span>Role</span><span className="text-foreground">Frontend Dev</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Status</span>
+                  <span className="flex items-center gap-1.5 text-emerald-600">
+                    <span className="h-1 w-1 rounded-full bg-emerald-500 animate-status" />
+                    Open to work
+                  </span>
                 </div>
               </div>
             </div>
           </div>
         </FadeIn>
 
+        {/* Right column — text */}
         <div className="md:col-span-7">
           <FadeIn>
             <h2 className="font-display text-4xl font-semibold tracking-tight md:text-6xl">

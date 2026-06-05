@@ -136,7 +136,7 @@ export function HeroScene() {
     <Canvas
       dpr={[1, 2]}
       camera={{ position: [0, 0, 5.5], fov: 45 }}
-      gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.1 }}
+      gl={{ antialias: true, alpha: true, toneMapping: THREE.ACESFilmicToneMapping }}
       style={{ background: "transparent" }}
     >
       <Suspense fallback={null}>
